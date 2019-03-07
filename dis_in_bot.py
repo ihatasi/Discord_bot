@@ -77,7 +77,7 @@ async def on_message(message):
             'https://kids.yahoo.co.jp/games/sports/013.html')
     if message.content.startswith('tenhou'):
         await client.send_message(message.channel,
-            'http://tenhou.net/0/?L2701')
+            'テンホウのURL')
     if message.content.startswith('-h'):
         await client.send_message(message.channel,
             '鬨の声です．\n'
