@@ -9,14 +9,21 @@ TOKEN = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" # トークンキー
 TEXT_CHANNEL = 000000000000000000000000 # テキストチャットのチャンネルID
 client = discord.Client()
 text_chat = discord.Object(id=TEXT_CHANNEL)
-
+flag = 1
 @client.event
 async def on_ready():
+    global flag
     print('bot is ready.')
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('-----')
+    voice_id = "000000000000000000000"
+    v_ch = client.get_channel(voice_id)
+    if len(v_ch.voice_members)==0:
+        flag = 0
+    else:
+        flag = 1
 
 @client.event
 async def on_voice_state_update(before, after):
@@ -31,13 +38,16 @@ async def on_voice_state_update(before, after):
         message = after.name + "が通話を終了" + ' ('+ str(n_time) + ')'
         print(message)
         await client.send_message(t_ch, message)
-    else:
-        now = datetime.datetime.now()
-        n_time = datetime.datetime(now.year, now.month,
-            now.day, now.hour, now.minute, now.second)
-        message = before.name + "が通話を開始" + ' ('+ str(n_time) + ')'
-        print(message)
-        await client.send_message(t_ch, message)
+        flag = 0
+    elif len(v_ch.voice_members) == 1:
+        if flag==0:
+            now = datetime.datetime.now()
+            n_time = datetime.datetime(now.year, now.month,
+                now.day, now.hour, now.minute, now.second)
+            message = before.name + "が通話を開始" + ' ('+ str(n_time) + ')'
+            print(message)
+            await client.send_message(t_ch, message)
+            flag=1
 #自動返信
 @client.event
 async def on_message(message):
