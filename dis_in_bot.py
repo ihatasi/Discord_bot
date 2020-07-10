@@ -112,7 +112,7 @@ async def on_voice_state_update(member, before, after):
         now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
         n_time = datetime.datetime(now.year, now.month,
             now.day, now.hour, now.minute, now.second)
-        message = str(v_ch3) + "で" + after.name + "が通話を終了" + ' ('+ str(n_time) + ')'
+        message = str(v_ch3) + "で" + member.nick + "が通話を終了" + ' ('+ str(n_time) + ')'
         print(message)
         await t_ch.send(message)
         flag3 = 0
@@ -120,7 +120,7 @@ async def on_voice_state_update(member, before, after):
         now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
         n_time = datetime.datetime(now.year, now.month,
             now.day, now.hour, now.minute, now.second)
-        message = str(v_ch3) + "で" + before.name + "が通話を開始" + ' ('+ str(n_time) + ')'
+        message = str(v_ch3) + "で" + member.nick + "が通話を開始" + ' ('+ str(n_time) + ')'
         print(message)
         await t_ch.send(message)
         flag3=1
@@ -128,7 +128,7 @@ async def on_voice_state_update(member, before, after):
         now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
         n_time = datetime.datetime(now.year, now.month,
             now.day, now.hour, now.minute, now.second)
-        message = str(v_ch4) + "で" + after.name + "が通話を終了" + ' ('+ str(n_time) + ')'
+        message = str(v_ch4) + "で" + member.nick + "が通話を終了" + ' ('+ str(n_time) + ')'
         print(message)
         await t_ch.send(message)
         flag4 = 0
@@ -136,7 +136,7 @@ async def on_voice_state_update(member, before, after):
         now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
         n_time = datetime.datetime(now.year, now.month,
             now.day, now.hour, now.minute, now.second)
-        message = str(v_ch4) + "で" + before.name + "が通話を開始" + ' ('+ str(n_time) + ')'
+        message = str(v_ch4) + "で" + member.nick + "が通話を開始" + ' ('+ str(n_time) + ')'
         print(message)
         await t_ch.send(message)
         flag4=1
